@@ -126,7 +126,7 @@
                     var searchField = $("#search").val();
                     var expression = new RegExp(searchField, "i");
                     if(expression != "/(?:)/i" & expression != "/ /i" ){
-                        $.getJSON('http://localhost:3000/product', function(data){
+                        $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product', function(data){
                             $.each($(data), function(i, value){
                                 if(value.name.search(expression) != -1){
                                     $("#result").append(
@@ -178,7 +178,7 @@
                     });
                 }
 
-                $.getJSON('http://localhost:3000/bag', function(){
+                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/bag', function(){
                     var checkLogin = $("#text-login").text();
                     if(checkLogin == 'Đăng nhập'){
                         $("#dropdown-bag-content").append(
@@ -190,7 +190,7 @@
                             '</li>'  
                         );
                     }else{
-                        $.getJSON('http://localhost:3000/bag?nameBag='+checkLogin, function(data){
+                        $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/bag?nameBag='+checkLogin, function(data){
                             $("#munber-bag").text(data.length);
                             if(data.length == 0){
                                 $("#dropdown-bag-content").append(
@@ -240,7 +240,7 @@
                 });
 
                 $("#submitSignUp").click(function(){
-                    $.getJSON('http://localhost:3000/user', function(data){
+                    $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/user', function(data){
                         $.each($(data), function(i, user){
                             var isValid = true;
                             var fullNamePattern = /[A-za-z]{3}/;
@@ -321,7 +321,7 @@
                             if(isValid == true){
                                 $.ajax({
                                     type: 'POST',
-                                    url: 'http://localhost:3000/user',
+                                    url: 'https://my-json-server.typicode.com/lebathanhtuan/db-json-online/user',
                                     data: {
                                         fullName: fullName,
                                         userName: userName,
@@ -367,7 +367,7 @@
                         }
                             
                         if(isValid == true){
-                            $.getJSON('http://localhost:3000/user', function(data){    
+                            $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/user', function(data){    
                                 $.each($(data), function(i, user){    
                                     if(user.userName == userName & user.password == password){
                                         $("#passwordSignIn").next().text('');

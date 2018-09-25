@@ -326,7 +326,7 @@
                     var searchField = $("#search").val();
                     var expression = new RegExp(searchField, "i");
                     if(expression != "/(?:)/i" & expression != "/ /i" ){
-                        $.getJSON('http://localhost:3000/product', function(data){
+                        $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product', function(data){
                             $.each($(data), function(i, value){
                                 if(value.name.search(expression) != -1){
                                     $("#result").append(
@@ -378,7 +378,7 @@
                     });
                 }
                 
-                $.getJSON('http://localhost:3000/companies', function(data){
+                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/companies', function(data){
                     $.each($(data), function(i, companies){
                         $("#all-companies").append(
                             '<li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">'+
@@ -394,7 +394,7 @@
                     });
                 });
                 
-                $.getJSON('http://localhost:3000/bag', function(){
+                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/bag', function(){
                     var checkLogin = $("#text-login").text();
                     if(checkLogin == 'Đăng nhập'){
                         $("#dropdown-bag-content").append(
@@ -406,7 +406,7 @@
                             '</li>'  
                         );
                     }else{
-                        $.getJSON('http://localhost:3000/bag?nameBag='+checkLogin, function(data){
+                        $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/bag?nameBag='+checkLogin, function(data){
                             $("#munber-bag").text(data.length);
                             if(data.length == 0){
                                 $("#dropdown-bag-content").append(
@@ -438,7 +438,7 @@
                     }
                 });
 
-                $.getJSON('http://localhost:3000/product?hot=1&_start=0&_end=4', function(data){
+                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product?hot=1&_start=0&_end=4', function(data){
                     $.each($(data), function(i, products){
                         if(products.hot == 1){
                             $("#carousel-1").append(
@@ -471,7 +471,7 @@
                         }
                     });
                 });
-                $.getJSON('http://localhost:3000/product?hot=1&_start=4&_end=8', function(data){
+                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product?hot=1&_start=4&_end=8', function(data){
                     $.each($(data), function(i, products){
                         if(products.hot == 1){
                             $("#carousel-2").append(
@@ -504,7 +504,7 @@
                         }
                     });
                 });
-                $.getJSON('http://localhost:3000/product?hot=1&_start=8&_end=12', function(data){
+                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product?hot=1&_start=8&_end=12', function(data){
                     $.each($(data), function(i, products){
                         if(products.hot == 1){
                             $("#carousel-3").append(
@@ -538,7 +538,7 @@
                     });
                 });
 
-                $.getJSON('http://localhost:3000/product?_page=1&_limit=16', function(data){
+                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product?_page=1&_limit=16', function(data){
                     $.each($(data), function(i, products){
                         $("#list-products").append(
                             '<div class="col-md-3 col-sm-6 col-6">'+

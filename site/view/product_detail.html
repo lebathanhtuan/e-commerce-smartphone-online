@@ -372,7 +372,7 @@
                     var searchField = $("#search").val();
                     var expression = new RegExp(searchField, "i");
                     if(expression != "/(?:)/i" & expression != "/ /i" ){
-                        $.getJSON('http://localhost:3000/product', function(data){
+                        $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product', function(data){
                             $.each($(data), function(i, value){
                                 if(value.name.search(expression) != -1){
                                     $("#result").append(
@@ -424,7 +424,7 @@
                     });
                 }
 
-                $.getJSON('http://localhost:3000/companies', function(data){
+                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/companies', function(data){
                     $.each($(data), function(i, companies){
                         $("#navCompany").append(
                             '<li class="nav-item" style="width:'+100/data.length+'%">'+
@@ -433,7 +433,7 @@
                         );
                     });
                 });
-                $.getJSON('http://localhost:3000/bag', function(){
+                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/bag', function(){
                     var checkLogin = $("#text-login").text();
                     if(checkLogin == 'Đăng nhập'){
                         $("#dropdown-bag-content").append(
@@ -445,7 +445,7 @@
                             '</li>'  
                         );
                     }else{
-                        $.getJSON('http://localhost:3000/bag?nameBag='+checkLogin, function(data){
+                        $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/bag?nameBag='+checkLogin, function(data){
                             $("#munber-bag").text(data.length);
                             if(data.length == 0){
                                 $("#dropdown-bag-content").append(
@@ -489,7 +489,7 @@
                 }
                 var idValue = getQueryVariable('id');
 
-                $.getJSON('http://localhost:3000/product/'+idValue, function(data){
+                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product/'+idValue, function(data){
                     var dataId = data.id;
                     var dataName = data.name;
                     var dataCompany = data.company;
@@ -630,7 +630,7 @@
                         }else{
                             $.ajax({
                                 type: 'POST',
-                                url: 'http://localhost:3000/bag',
+                                url: 'https://my-json-server.typicode.com/lebathanhtuan/db-json-online/bag',
                                 data: {
                                     id : dataId+colorProduct+checkLogin,
                                     name : dataName,
@@ -664,7 +664,7 @@
                         }else{
                             $.ajax({
                                 type: 'POST',
-                                url: 'http://localhost:3000/bag',
+                                url: 'https://my-json-server.typicode.com/lebathanhtuan/db-json-online/bag',
                                 data: {
                                     id : dataId+colorProduct+checkLogin,
                                     name : dataName,
@@ -687,7 +687,7 @@
                     });  
                 });
 
-                $.getJSON('http://localhost:3000/comments', function(dataComments){
+                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/comments', function(dataComments){
                     $.each($(dataComments), function(i, comments){
                         if(comments.idProduct == idValue){
                             $("#displayComments").append(
@@ -737,7 +737,7 @@
                     if(isValid == true){
                         $.ajax({
                             type: 'POST',
-                            url: 'http://localhost:3000/comments',
+                            url: 'https://my-json-server.typicode.com/lebathanhtuan/db-json-online/comments',
                             data: {
                                 idProduct: idValue,
                                 name: nameCmt,

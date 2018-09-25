@@ -234,7 +234,7 @@
                     var searchField = $("#search").val();
                     var expression = new RegExp(searchField, "i");
                     if(expression != "/(?:)/i" & expression != "/ /i" ){
-                        $.getJSON('http://localhost:3000/product', function(data){
+                        $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product', function(data){
                             $.each($(data), function(i, value){
                                 if(value.name.search(expression) != -1){
                                     $("#result").append(
@@ -286,8 +286,8 @@
                     });
                 }
                 
-                $.getJSON('http://localhost:3000/companies', function(data){
-                    $.getJSON('http://localhost:3000/product', function(product){
+                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/companies', function(data){
+                    $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product', function(product){
                         var productLenght = product.length;
                         $("#all-companies").append(
                             '<li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">'+
@@ -297,7 +297,7 @@
                         );
                     });   
                     $.each($(data), function(i, companies){
-                        $.getJSON('http://localhost:3000/product?company='+companies.nameCompany, function(dataCompany){
+                        $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product?company='+companies.nameCompany, function(dataCompany){
                             var companyLenght = dataCompany.length;
                             $("#all-companies").append(
                                 '<li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">'+
@@ -314,7 +314,7 @@
                     });
                 });
                 
-                $.getJSON('http://localhost:3000/bag', function(){
+                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/bag', function(){
                     var checkLogin = $("#text-login").text();
                     if(checkLogin == 'Đăng nhập'){
                         $("#dropdown-bag-content").append(
@@ -326,7 +326,7 @@
                             '</li>'  
                         );
                     }else{
-                        $.getJSON('http://localhost:3000/bag?nameBag='+checkLogin, function(data){
+                        $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/bag?nameBag='+checkLogin, function(data){
                             $("#munber-bag").text(data.length);
                             if(data.length == 0){
                                 $("#dropdown-bag-content").append(
@@ -377,11 +377,11 @@
                 var page = 1;
                 var pagelimit = 15;
                 if(companyValue == 'all'){
-                    $.getJSON('http://localhost:3000/product', function(data){
+                    $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product', function(data){
                         var totalRecord = data.length;
                         var totalPage = Math.floor(totalRecord/pagelimit) + 1;
                         $("#number-product").text('Có '+totalRecord+' sản phẩm ('+page+'/'+totalPage+' trang)');
-                        $.getJSON('http://localhost:3000/product?_page='+page+'&_limit='+pagelimit, function(data){
+                        $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product?_page='+page+'&_limit='+pagelimit, function(data){
                             $.each($(data), function(i, products){
                                 $("#all-product").append(
                                     '<div class="col-md-4 col-sm-6 col-6">'+
@@ -418,7 +418,7 @@
                             if(page > 1){
                                 page = page - 1;
                                 $("#number-product").text('Có '+totalRecord+' sản phẩm ('+page+'/'+totalPage+' trang)');
-                                $.getJSON('http://localhost:3000/product?_page='+page+'&_limit='+pagelimit, function(data){
+                                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product?_page='+page+'&_limit='+pagelimit, function(data){
                                     $("#all-product").empty();
                                     $.each($(data), function(i, products){
                                         $("#all-product").append(
@@ -458,7 +458,7 @@
                             if(page*pagelimit < totalRecord){
                                 page = page + 1;
                                 $("#number-product").text('Có '+totalRecord+' sản phẩm ('+page+'/'+totalPage+' trang)');
-                                $.getJSON('http://localhost:3000/product?_page='+page+'&_limit='+pagelimit, function(data){
+                                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product?_page='+page+'&_limit='+pagelimit, function(data){
                                     $("#all-product").empty();
                                     $.each($(data), function(i, products){
                                         $("#all-product").append(
@@ -497,11 +497,11 @@
                     });
                     
                 }else if(hotValue == 'banchay'){
-                    $.getJSON('http://localhost:3000/product?hot=1', function(data){
+                    $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product?hot=1', function(data){
                         var totalRecord = data.length;
                         var totalPage = Math.floor(totalRecord/pagelimit) + 1;
                         $("#number-product").text('Có '+totalRecord+' sản phẩm ('+page+'/'+totalPage+' trang)');
-                        $.getJSON('http://localhost:3000/product?hot=1&_page='+page+'&_limit='+pagelimit, function(data){
+                        $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product?hot=1&_page='+page+'&_limit='+pagelimit, function(data){
                             $.each($(data), function(i, products){
                                 $("#all-product").append(
                                     '<div class="col-md-4 col-sm-6 col-6">'+
@@ -538,7 +538,7 @@
                             if(page > 1){
                                 page = page - 1;
                                 $("#number-product").text('Có '+totalRecord+' sản phẩm ('+page+'/'+totalPage+' trang)');
-                                $.getJSON('http://localhost:3000/product?hot=1&_page='+page+'&_limit='+pagelimit, function(data){
+                                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product?hot=1&_page='+page+'&_limit='+pagelimit, function(data){
                                     $("#all-product").empty();
                                     $.each($(data), function(i, products){
                                         $("#all-product").append(
@@ -578,7 +578,7 @@
                             if(page*pagelimit < totalRecord){
                                 page = page + 1;
                                 $("#number-product").text('Có '+totalRecord+' sản phẩm ('+page+'/'+totalPage+' trang)');
-                                $.getJSON('http://localhost:3000/product?hot=1&_page='+page+'&_limit='+pagelimit, function(data){
+                                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product?hot=1&_page='+page+'&_limit='+pagelimit, function(data){
                                     $("#all-product").empty();
                                     $.each($(data), function(i, products){
                                         $("#all-product").append(
@@ -618,7 +618,7 @@
 
                 }else if(minValue != false & maxValue != false){
                     $(".container-pagination").css('display', 'none');
-                    $.getJSON('http://localhost:3000/product', function(data){
+                    $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product', function(data){
                         $.each($(data), function(i, products){
                             if(parseInt(minValue) < parseInt(products.price) & parseInt(products.price) < parseInt(maxValue)){
                                 $("#all-product").append(
@@ -656,11 +656,11 @@
                         $(".price-product").simpleMoneyFormat();
                     });
                 }else{
-                    $.getJSON('http://localhost:3000/product?company='+companyValue, function(data){
+                    $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product?company='+companyValue, function(data){
                         var totalRecord = data.length;
                         var totalPage = Math.floor(totalRecord/pagelimit) + 1;
                         $("#number-product").text('Có '+totalRecord+' sản phẩm ('+page+'/'+totalPage+' trang)');
-                        $.getJSON('http://localhost:3000/product?company='+companyValue+'&_page='+page+'&_limit='+pagelimit, function(data){
+                        $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product?company='+companyValue+'&_page='+page+'&_limit='+pagelimit, function(data){
                             $.each($(data), function(i, products){
                                 if(companyValue == products.company){
                                     $("#all-product").append(
@@ -699,7 +699,7 @@
                             if(page > 1){
                                 page = page - 1;
                                 $("#number-product").text('Có '+totalRecord+' sản phẩm ('+page+'/'+totalPage+' trang)');
-                                $.getJSON('http://localhost:3000/product?company='+companyValue+'&_page='+page+'&_limit='+pagelimit, function(data){
+                                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product?company='+companyValue+'&_page='+page+'&_limit='+pagelimit, function(data){
                                     $("#all-product").empty();
                                     $.each($(data), function(i, products){
                                         if(companyValue == products.company){
@@ -741,7 +741,7 @@
                             if(page*pagelimit < totalRecord){
                                 page = page + 1;
                                 $("#number-product").text('Có '+totalRecord+' sản phẩm ('+page+'/'+totalPage+' trang)');
-                                $.getJSON('http://localhost:3000/product?company='+companyValue+'&_page='+page+'&_limit='+pagelimit, function(data){
+                                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product?company='+companyValue+'&_page='+page+'&_limit='+pagelimit, function(data){
                                     $("#all-product").empty();
                                     $.each($(data), function(i, products){
                                         if(companyValue == products.company){

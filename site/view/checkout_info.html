@@ -349,7 +349,7 @@
                     var searchField = $("#search").val();
                     var expression = new RegExp(searchField, "i");
                     if(expression != "/(?:)/i" & expression != "/ /i" ){
-                        $.getJSON('http://localhost:3000/product', function(data){
+                        $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/product', function(data){
                             $.each($(data), function(i, value){
                                 if(value.name.search(expression) != -1){
                                     $("#result").append(
@@ -401,7 +401,7 @@
                     });
                 }
 
-                $.getJSON('http://localhost:3000/companies', function(data){
+                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/companies', function(data){
                     $.each($(data), function(i, companies){
                         $("#navCompany").append(
                             '<li class="nav-item" style="width:'+100/data.length+'%">'+
@@ -410,12 +410,12 @@
                         );
                     });
                 });
-                $.getJSON('http://localhost:3000/bag', function(){
+                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/bag', function(){
                     var checkLogin = $("#text-login").text();
                     if(checkLogin == 'Đăng nhập'){
                         $(location).attr('href', 'login.html');
                     }else{
-                        $.getJSON('http://localhost:3000/bag?nameBag='+checkLogin, function(data){
+                        $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/bag?nameBag='+checkLogin, function(data){
                             $("#munber-bag").text(data.length);
                             if(data.length == 0){
                                 $(location).attr('href', 'checkout_cart.html');
@@ -440,13 +440,13 @@
                     }
                 });
                 
-                $.getJSON('http://localhost:3000/checkoutInfo', function(data){
+                $.getJSON('https://my-json-server.typicode.com/lebathanhtuan/db-json-online/checkoutInfo', function(data){
                     var checkLogin = $("#text-login").text();
                     $.each($(data), function(i, info){ 
                         if(info.id == checkLogin){
                             $.ajax({
                                 type: 'DELETE',
-                                url: 'http://localhost:3000/checkoutInfo/'+checkLogin,
+                                url: 'https://my-json-server.typicode.com/lebathanhtuan/db-json-online/checkoutInfo/'+checkLogin,
                                 dataType: 'json'
                             });
                         }
@@ -560,7 +560,7 @@
                     if(isValid == true){
                         $.ajax({
                             type: 'POST',
-                            url: 'http://localhost:3000/checkoutInfo',
+                            url: 'https://my-json-server.typicode.com/lebathanhtuan/db-json-online/checkoutInfo',
                             data: {
                                 id : checkLogin,
                                 fullname : fullname,
