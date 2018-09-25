@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title id="title"></title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel ="shortcut icon" href="../../img/logo/favicon_Didongxanh.png">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="../../public/css/style.css">
+    </head>
+    <body style="background-color: #f1f1f1">
+        <div class="topnav">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="logo-web">
+                            <a href="home.html"><img src="../../img/logo/logo_Didongxanh_white.png" width="150px" height="auto"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="search-nav">
+                            <input id="search" class="form-control" type="text" style="position: relative;" placeholder="Tìm kiếm">
+                            <ul class="list-group" id="result" style="margin-top: 15px"></ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-5 col-5">
+                        <div class="bag-nav dropdown-bag">
+                            <a href="checkout_cart.html" class="link-bag">
+                                <i class="fa fa-shopping-bag" style="font-size: 28px;"></i>
+                                <span class="text-bag">Giỏ</span>
+                                <span class="badge badge-dark badge-pill" id="munber-bag"></span>
+                            </a>
+                            <div class="dropdown-bag-content">
+                                <div style="background-color: #ff6700; height: 5px; border-radius: 3px 3px 0 0"></div>
+                                <div class="list-group" id="dropdown-bag-content">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-7 col-7">
+                        <div class="login-nav dropdown-login" id="displayLogin">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+            <a href="../../home.html" class="navbar-toggler" style="color: #ccc">Trang chủ</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav" id="navCompany">
+                    
+                </ul>
+            </div>           
+        </nav>
+        <div class="container">
+            <div>
+                <ul class="breadcrumb" id="displayBreadcrumb">
+                    <li class="breadcrumb-item"><a href="home.html">Trang chủ</a></li>
+                    
+                </ul>
+            </div>
+            <div class="container-product-detail">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="img-fluid border" id="imgCover" >
+                            
+                        </div>
+                        <div class="container-swap-img" id="urlImg">
+
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <form>
+                            <div class="container-product-name">
+                                <input type="text" id="idProduct" style="display: none" name="idProduct" value="" disabled="disabled">
+                                <h3 id="nameProduct"></h3>
+                            </div>
+                            <div class="container-product-price">
+                                <input type="text" id="priceProduct" style="display: none" name="priceProduct" value="" disabled="disabled">
+                                <h3 class="priceProduct"></h3>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <select id="colorProduct" class="custom-select">
+                                            <option value="0" selected>Chọn màu</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <select class="custom-select" id="guarantee">
+                                            <option value="1" selected>Bảo hành mặt định</option>
+                                            <option value="2">Bảo hành nâng cao</option>
+                                            <option value="3">Bảo hành cao cấp</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="container-product-promotion">
+                                        <div class="product-promotion-head">Khuyến mãi/ Ưu đãi</div>
+                                            <div class="product-promotion-main">
+                                                <div class="scrollbar content-promotion p-1">
+                                                    <ul id="displayPromotions" class="pl-4" style="list-style-type: circle; overflow: hidden;">
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="container-product-guarantee">
+                                        <div class="product-guarantee-head">Chế độ bảo hành</div>
+                                            <div class="product-guarantee-main">
+                                                <div class="scrollbar content-guarantee" id="content-guarantee">
+                                                    <h6 style="color: green">Mặc định</h6>
+                                                    <div class="border mb-2">
+                                                        <p>1 đổi 1, 15 ngày</p>
+                                                        <p>Bảo hành 12 tháng</p>
+                                                        <p>Xử lý lỗi trong 15 ngày</p>
+                                                    </div>
+                                                    <p>Bảo hành toàn diện phần cứng bao gồm nguồn, màn hình, vân tay. Ngoại trừ rơi móp, vào nước</p>
+                                                    <button type="button" class="btn btn-outline-success">Xem thêm</button>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <button type="button" id="submitBag" class="btn btn-danger btn-submit-bag"><i class="fa fa-credit-card"></i> MUA NGAY<span class="desc-submit-bag">Giao hàng trong 1 giờ</span></button>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <button type="button" id="setBag" class="btn btn-success btn-submit-bag"><i class="fa fa-cart-plus" style="font-size:20px"></i> THÊM VÀO GIỎ<span class="desc-submit-bag">Tiếp tục mua sắm</span></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="container-product-detail">
+                        <div class="tabs-product sticky-top">
+                            <ul class="nav justify-content-center">
+                                <li class="characteristics tab-active">Đặc điểm nổi bật</li>
+                                <li class="ratingAndReviews">Đánh giá & Nhận xét</li>
+                            </ul>
+                        </div>
+                        <div id="characteristics" class="pt-4 pb-2">
+                            <div id="displayPosts">
+
+                            </div>
+                        </div>
+                        <div id="ratingAndReviews" class="pb-2" style="display: none">
+                            <div class="container-ratingAndReviews border">
+                                <h4>Viết nhận xét</h4>
+                                <form>
+                                    <div class="form-group">
+                                        <label for="nameCmt" id="nameCmtLabel">Tên</label>&nbsp;<span style="color: red">*</span>
+                                        <input class="form-control" type="text" name="nameCmt" id="nameCmt">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="comment" id="commentLabel">Nhận xét</label>&nbsp;<span style="color: red">*</span>
+                                        <textarea class="form-control" rows="3" id="comment"></textarea>
+                                    </div>
+                                    <div>
+                                    </div>
+                                    <input type="button" id="submitCmt" class="btn btn-secondary" value="Gửi">
+                                </form>
+                            </div>
+                            <div class="border scrollbar" id="displayComments" style="max-height: 1000px;">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="container-product-detail sticky-top p-0">
+                        <p style="padding: 25px 25px 3px 25px; font-size: 20px">Thông số kĩ thuật</p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Màn hình:</td>
+                                        <td id="displayScreen"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hệ điều hành:</td>
+                                        <td id="displayOS"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Camera sau:</td>
+                                        <td id="displayEndCamera"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Camera trước:</td>
+                                        <td id="displayFrontCamera"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>CPU:</td>
+                                        <td id="displayCPU"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>GPU:</td>
+                                        <td id="displayGPU"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>RAM:</td>
+                                        <td id="displayRAM"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bộ nhớ trong:</td>
+                                        <td id="displayROM"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Thẻ SIM:</td>
+                                        <td id="displaySim"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dung lượng pin:</td>
+                                        <td id="displayBattery"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid container-footer-police">
+            <div class="container container-police">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="content-police">
+                            <div class="float-left police-logo">
+                                <img src="../../img/icon/certificate.png" height="42px" width="auto">
+                            </div>
+                            <div class="police-text">
+                                <h6>Hàng chính hãng</h6>
+                                <p>Chúng tôi cam kết mọi sản phẩm là hàng chính hãng.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="content-police">
+                            <div class="float-left police-logo">
+                                <img src="../../img/icon/refresh.png" height="42px" width="auto">
+                            </div>
+                            <div class="police-text">
+                                <h6>Đổi trả hàng</h6>
+                                <p>Dễ dàng lên đến 15 ngày đầu khi mua sản phẩm.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="content-police">
+                            <div class="float-left police-logo">
+                                <img src="../../img/icon/protect-filled.png" height="42px" width="auto">
+                            </div>
+                            <div class="police-text">
+                                <h6>Bảo hành 12 tháng</h6>
+                                <p>Chính hãng mọi sản phẩm của chúng tối.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="content-police">
+                            <div class="float-left police-logo">
+                                <img src="../../img/icon/itruck-filled.png" height="42px" width="auto">
+                            </div>
+                            <div class="police-text">
+                                <h6>Giao hàng toàn quốc</h6>
+                                <p>Vận chuyển nhanh trong 60 phút.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid container-footer-about">
+            <div class="container container-about">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="content-about">
+                            <div class="about-text">
+                                <h6>Về chúng tôi</h6>
+                                <p>didongxanh.com được thành lập từ năm 2004, là chuỗi bán lẻ thiết bị di động (điện thoại di động, máy tính bảng, laptop và phụ kiện) có thị phần số 1 Việt Nam với hơn 1000 cửa hàng hiện diện tại 63 tỉnh thành trên khắp Việt Nam.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="content-about">
+                            <div class="about-text">
+                                <h6>Liên kết liên quan</h6>
+                                <ul style="padding-left: 20px;">
+                                    <li>Chính sách bảo hành</li>
+                                    <li>Chính sách đổi trả</li>
+                                    <li>Giao hàng và thanh toán</li>
+                                    <li>Tìm hiểu về mua trả góp</li>
+                                    <li>Tin khuyến mãi</li>
+                                    <li>Hệ thống cửa hàng</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="content-about">
+                            <div class="about-text">
+                                <h6>Liên hệ</h6>
+                                <p>Tư vấn miễn phí (24/7):</p>
+                                <span class="hotline">1800 6601</span>
+                                <p>Góp ý, phản ánh (8h00 - 22h00):</p>
+                                <span class="hotline">1800 6616</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="content-about">
+                            <div class="about-text" style="text-align: left">
+                                <h6>Liên kết khác</h6>
+                                <p><i class="material-icons" style="font-size: 12px">email</i>  Email: hotro@didongxanh.com</p>
+                                <p><i class="fa fa-facebook-official"></i>  Fanpage: fb.com/didongxanh</p>
+                                <p><i class="fa fa-youtube-play"></i>  Youtube: Di Động Xanh</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid container-footer-copyright">
+            <div class="container container-copyright">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-6">
+                        <div class="content-copyright">
+                            <p>Copyright © 2018</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-6">
+                        <div class="content-card">
+                            <i class="fa fa-cc-visa"></i>
+                            <i class="fa fa-cc-mastercard"></i>
+                            <i class="fa fa-credit-card-alt"></i>
+                            <i class="fa fa-cc-jcb"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="../../public/js/simple.money.format.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#search").keyup(function(){
+                    $("#result").empty();
+                    var searchField = $("#search").val();
+                    var expression = new RegExp(searchField, "i");
+                    if(expression != "/(?:)/i" & expression != "/ /i" ){
+                        $.getJSON('http://localhost:3000/product', function(data){
+                            $.each($(data), function(i, value){
+                                if(value.name.search(expression) != -1){
+                                    $("#result").append(
+                                        '<li class="list-group-item list-group-item-action">'+
+                                            '<a href="product_detail.html?id='+value.id+'" style="text-decoration: none;">'+
+                                                '<img src="'+value.imgCover+'" class="img-thumbnail float-left" " height="48" width="48">'+
+                                                '<p class="text-result" style="color: black">'+value.name+'</p>'+
+                                                '<p class="text-result text-muted text-muted-search">'+value.price+'</p>'+
+                                            '</a>'+
+                                        '</li>'                            
+                                    );
+                                }
+                            });
+                            $(".text-muted-search").simpleMoneyFormat();
+                        });
+                    }
+                });
+
+                var getUser = localStorage.getItem('username');
+                if(getUser == null){
+                    $("#displayLogin").empty();
+                    $("#displayLogin").append(
+                        '<a href="../../site/view/login.html" class="link-login">'+
+                            '<i class="fa fa-user" style="font-size: 28px;"></i>'+
+                            '<span class="text-login" id="text-login">Đăng nhập</span>'+
+                        '</a>'
+                    );
+                }else{
+                    $("#displayLogin").empty();
+                    $("#displayLogin").append(
+                        '<div class="link-login">'+
+                            '<i class="fa fa-user" style="font-size: 28px;"></i>'+
+                            '<span class="text-login" id="text-login">'+getUser+'</span>'+
+                        '</div>'+
+                        '<div class="dropdown-login-content">'+
+                            '<a href="my_account.html" class="list-group-item list-group-item-action">Kiểm tra thông tin</a>'+
+                            '<a href="#" id="logout" class="list-group-item list-group-item-action">Đăng xuất</a>'+
+                        '</div>'
+                    );
+                    $("#logout").click(function(){
+                        localStorage.removeItem("username");
+                        $("#displayLogin").empty();
+                        $("#displayLogin").append(
+                        '<a href="../../site/view/login.html" class="link-login">'+
+                            '<i class="fa fa-user" style="font-size: 28px;"></i>'+
+                            '<span class="text-login" id="text-login">Đăng nhập</span>'+
+                        '</a>'
+                        );
+                    });
+                }
+
+                $.getJSON('http://localhost:3000/companies', function(data){
+                    $.each($(data), function(i, companies){
+                        $("#navCompany").append(
+                            '<li class="nav-item" style="width:'+100/data.length+'%">'+
+                                '<a class="nav-link" href="product.html?company='+companies.nameCompany+'">'+companies.nameCompany+'</a>'+
+                            '</li>'
+                        );
+                    });
+                });
+                $.getJSON('http://localhost:3000/bag', function(){
+                    var checkLogin = $("#text-login").text();
+                    if(checkLogin == 'Đăng nhập'){
+                        $("#dropdown-bag-content").append(
+                            '<li class="list-group-item list-group-item-action not-login-bag">'+
+                                '<img src="../../img/icon/not-login.png" width="48" height="48">'+
+                                '<h6>Bạn chưa đăng nhập!</h6>'+
+                                '<p style="font-size: 14px">Bạn có muốn đăng nhập để tiếp tục?</p>'+
+                                '<a href="login.html" class="btn btn-outline-secondary">Đồng ý</a>'+
+                            '</li>'  
+                        );
+                    }else{
+                        $.getJSON('http://localhost:3000/bag?nameBag='+checkLogin, function(data){
+                            $("#munber-bag").text(data.length);
+                            if(data.length == 0){
+                                $("#dropdown-bag-content").append(
+                                    '<li class="list-group-item list-group-item-action not-login-bag">'+
+                                        '<img src="../../img/icon/shopping-cart-empty.png" width="48" height="48">'+
+                                        '<h6>Giỏ hàng trống!</h6>'+
+                                        '<p style="font-size: 14px">Bạn có muốn tìm hiểu thêm các sản phẩm?</p>'+
+                                        '<a href="product.html?company=all" class="btn btn-outline-secondary">Đồng ý</a>'+
+                                    '</li>'  
+                                );
+                            }else{
+                                $.each($(data), function(i, bag){                                
+                                    $("#dropdown-bag-content").append(
+                                        '<li class="list-group-item list-group-item-action">'+
+                                            '<img src="'+bag.imgCover+'" class="img-thumbnail float-left" " height="46" width="46">'+
+                                            '<p class="text-result" style="color: black">'+bag.name+' | '+bag.color+' <span class="badge badge-pill" style="background-color: #ff6700; color: white">'+bag.number+'</span></p>'+                
+                                            '<p class="text-result text-muted">'+bag.price+'</p>'+
+                                        '</li>'  
+                                    );
+                                });
+                                $("#dropdown-bag-content").append(
+                                    '<li class="list-group-item list-group-item-action" style="text-align: center">'+
+                                        '<a href="checkout_cart.html" class="btn btn-outline-secondary">Xem chi tiết</a>'+
+                                    '</li>'  
+                                );
+                                $(".text-muted").simpleMoneyFormat();
+                            }                              
+                        });  
+                    }
+                });
+
+                function getQueryVariable(variable)
+                {
+                    var query = window.location.search.substring(1);
+                    var vars = query.split('&');
+                    for (var i=0;i<vars.length;i++) {
+                        var pair = vars[i].split('=');
+                        if(pair[0] == variable){return pair[1];}
+                    }
+                    return(false);
+                }
+                var idValue = getQueryVariable('id');
+
+                $.getJSON('http://localhost:3000/product/'+idValue, function(data){
+                    var dataId = data.id;
+                    var dataName = data.name;
+                    var dataCompany = data.company;
+                    var dataPrice = data.price;
+                    var dataImgCover = data.imgCover;
+                    var dataUrlImg = data.urlImg;
+                    var dataPromotions = data.promotions;
+
+                    var dataScreen = data.specifications.screen;
+                    var dataOS = data.specifications.os;
+                    var dataEndCamera = data.specifications.endCamera;
+                    var dataFrontCamera = data.specifications.frontCamera;
+                    var dataCPU = data.specifications.cpu;
+                    var dataGPU = data.specifications.gpu;
+                    var dataRAM = data.specifications.ram;
+                    var dataROM = data.specifications.rom;
+                    var dataSim = data.specifications.sim;
+                    var dataBattery = data.specifications.battery;
+
+                    var dataPosts = data.posts;
+
+                    var dataOptions = data.options;
+                    
+                    $("#title").text(dataName+' | Didongxanh');
+
+                    $("#idProduct").val(dataId);
+                    $("#nameProduct").text(dataName);
+                    $("#priceProduct").val(dataPrice);
+                    $(".priceProduct").text(dataPrice).simpleMoneyFormat();
+
+                    $.each($(dataOptions), function(i, options){
+                        $("#colorProduct").append(
+                            '<option value="'+options.color+'">'+options.color+'</option>'
+                        );
+                    });
+
+                    $("#imgCover").append(
+                        '<div style="background: url('+dataImgCover+') no-repeat; padding-top: 133.33%; width: 100%; background-position: 50% 50%; background-size: cover;"></div>'
+                    );
+                    $.each($(dataUrlImg), function(i, urlImg){
+                        $("#urlImg").append(
+                            '<a href="'+urlImg.img+'" class="linkImg" style="background: url('+urlImg.img+') no-repeat; padding-top: 18%; background-position: 50% 50%; background-size: cover;"></a>'  
+                        );
+                    });
+                    $("#urlImg").append(
+                        '<a style="background: url(../../img/icon/video-icon.png) no-repeat; padding-top: 18%; background-position: 50% 50%; background-size: cover;"></a>'+
+                        '<a style="background: url(../../img/icon/gallery-icon.png) no-repeat; padding-top: 18%; background-position: 50% 50%; background-size: cover;"></a>'
+                    );
+
+                    $(".linkImg").each(function(){
+                        var image = new Image();
+                        image.src = $(this).attr("href");
+                    });
+                    $(".linkImg").click(function(evt){
+                        var imgNode = $(this).attr("href");
+                        $("#imgCover").empty();
+                        $("#imgCover").append(
+                            '<div style="background: url('+imgNode+') no-repeat; padding-top: 133.33%; width: 100%; background-position: 50% 50%; background-size: cover;"></div>'
+                        );
+                        evt.preventDefault();
+                    });
+                    
+                    $.each($(dataPromotions), function(i, promotions){
+                        $("#displayPromotions").append(
+                            '<li>'+promotions.li+'</li>'
+                        );
+                    });
+                    $("#displayBreadcrumb").append(
+                        '<li class="breadcrumb-item"><a href="product.html?company='+dataCompany+'">'+dataCompany+'</a></li>'+
+                        '<li class="breadcrumb-item active">'+dataName+'</li>'
+                    );
+                    
+                    $("#displayScreen").text(dataScreen);
+                    $("#displayOS").text(dataOS);
+                    $("#displayEndCamera").text(dataEndCamera);
+                    $("#displayFrontCamera").text(dataFrontCamera);
+                    $("#displayCPU").text(dataCPU);
+                    $("#displayGPU").text(dataGPU);
+                    $("#displayRAM").text(dataRAM);
+                    $("#displayROM").text(dataROM);
+                    $("#displaySim").text(dataSim);
+                    $("#displayBattery").text(dataBattery);
+                    $("#displayPosts").append(dataPosts);
+
+                    $("#guarantee").change(function(){
+                        if($("#guarantee").val() == 1){
+                            $("#content-guarantee").empty();
+                            $("#content-guarantee").append(
+                                '<h6 style="color: green">Mặc định</h6>'+
+                                '<div class="border mb-2">'+
+                                    '<p>1 đổi 1, 15 ngày</p>'+
+                                    '<p>Bảo hành 12 tháng</p>'+
+                                    '<p>Xử lý lỗi trong 15 ngày</p>'+
+                                '</div>'+
+                                '<p>Bảo hành toàn diện phần cứng bao gồm nguồn, màn hình, vân tay. Ngoại trừ rơi móp, vào nước</p>'+
+                                '<button class="btn btn-outline-success">Xem thêm</button>'
+                            );
+                        }
+                        if($("#guarantee").val() == 2){
+                            $("#content-guarantee").empty();
+                            $("#content-guarantee").append(
+                                '<h6 style="color: green">Nâng cao</h6>'+
+                                '<div class="border mb-2">'+
+                                    '<p>1 đổi 1, 30 ngày</p>'+
+                                    '<p>Bảo hành 18 tháng</p>'+
+                                    '<p>Xử lý lỗi trong 7 ngày</p>'+
+                                    '<p>Bảo hành rơi móp</p>'+
+                                '</div>'+
+                                '<p>Bảo hành toàn diện phần cứng bao gồm nguồn, màn hình, vân tay cả rơi móp. Ngoại trừ vào nước</p>'+
+                                '<button class="btn btn-outline-success">Xem thêm</button>'
+                            );
+                        }
+                        if($("#guarantee").val() == 3){
+                            $("#content-guarantee").empty();
+                            $("#content-guarantee").append(
+                                '<h6 style="color: green">Cao cấp</h6>'+
+                                '<div class="border mb-2">'+
+                                    '<p>1 đổi 1, 45 ngày</p>'+
+                                    '<p>Bảo hành 24 tháng</p>'+
+                                    '<p>Xử lý lỗi trong 3 ngày</p>'+
+                                    '<p>Bảo hành rơi móp, vào nước</p>'+
+                                '</div>'+
+                                '<p>Bảo hành toàn diện phần cứng bao gồm nguồn, màn hình, vân tay cả rơi móp và vào nước</p>'+
+                                '<button class="btn btn-outline-success">Xem thêm</button>'
+                            );
+                        }
+                    });
+
+                    $("#setBag").click(function(){
+                        var colorProduct = $("#colorProduct").val();
+                        var checkLogin = $("#text-login").text();
+
+                        if(checkLogin == 'Đăng nhập'){
+                            alert('Bạn chưa đăng nhập!');
+                        }else if(colorProduct == 0){
+                            alert('Bạn chưa chọn màu của sản phẩm!');
+                            $("#colorProduct").css('border','1px solid red');
+                        }else{
+                            $.ajax({
+                                type: 'POST',
+                                url: 'http://localhost:3000/bag',
+                                data: {
+                                    id : dataId+colorProduct+checkLogin,
+                                    name : dataName,
+                                    price : dataPrice,
+                                    color : colorProduct,
+                                    number : 1,
+                                    imgCover : dataImgCover,
+                                    nameBag : checkLogin,
+                                    idProduct : dataId
+                                },
+                                success: function(data) { 
+                                    alert('Đã thêm vào giỏ!'); 
+                                },
+                                error: function(){
+                                    alert('Sản phẩm đã tồn tại trong giỏ của bạn!');
+                                },
+                                dataType: 'json'
+                            });
+                        }
+                    });
+
+                    $("#submitBag").click(function(){
+                        var colorProduct = $("#colorProduct").val();
+                        var checkLogin = $("#text-login").text();
+
+                        if(checkLogin == 'Đăng nhập'){
+                            alert('Bạn chưa đăng nhập!');
+                        }else if(colorProduct == 0){
+                            alert('Bạn chưa chọn màu của sản phẩm!');
+                            $("#colorProduct").css('border','1px solid red');
+                        }else{
+                            $.ajax({
+                                type: 'POST',
+                                url: 'http://localhost:3000/bag',
+                                data: {
+                                    id : dataId+colorProduct+checkLogin,
+                                    name : dataName,
+                                    price : dataPrice,
+                                    color : colorProduct,
+                                    number : 1,
+                                    imgCover : dataImgCover,
+                                    nameBag : checkLogin,
+                                    idProduct : dataId
+                                },
+                                success: function(data) { 
+                                    $(location).attr('href', 'checkout_cart.html');  
+                                },
+                                error: function(){
+                                    alert('Sản phẩm đã tồn tại trong giỏ của bạn!');
+                                },
+                                dataType: 'json'
+                            });
+                        }
+                    });  
+                });
+
+                $.getJSON('http://localhost:3000/comments', function(dataComments){
+                    $.each($(dataComments), function(i, comments){
+                        if(comments.idProduct == idValue){
+                            $("#displayComments").append(
+                                '<div class="media pt-2 pl-4 pr-4">'+
+                                    '<img src="https://png.icons8.com/ios/40/777777/user-male-circle-filled.png" class="material-icons mr-3 mt-1 rounded-circle" height="48x" width="48px">'+
+                                    '<div class="media-body">'+
+                                        '<h5>'+comments.name+'&nbsp;&nbsp;&nbsp;<small><i>Đăng ngày '+comments.time+'</i></small></h5>'+
+                                        '<p>'+comments.cmt+'</p>'+
+                                    '</div>'+
+                                '</div>'
+                            );
+                        }
+                    });
+                });                
+
+                $("#submitCmt").click(function(){
+                    var nameCmt = $("#nameCmt").val();
+                    var comment = $("#comment").val();
+                    var now = new Date();
+                    var formatTime = now.getDate() +'/'+ parseInt(now.getUTCMonth()+1) + '/' + now.getFullYear() + '  ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
+
+                    var isValid = true;
+                    var namePattern = /[A-Za-z]{2}/;
+
+                    if(nameCmt == ''){
+                        $("#nameCmtLabel").next().html("&nbsp;&nbsp;<small>Tên không được để trống</small>");
+                        $("#nameCmt").css('border', '1px solid red');
+                        isValid = false;
+                    }else if(!namePattern.test(nameCmt)){
+                        $("#nameCmtLabel").next().text("Tên phải lớn hơn 2 kí tự và là chữ cái!");
+                        $("#nameCmt").css('border', '1px solid red');
+                        isValid = false;
+                    }else{
+                        $("#nameCmtLabel").next().text("*");
+                        $("#nameCmt").css('border', '1px solid #ced4da');
+                    }
+
+                    if(comment == ''){
+                        $("#commentLabel").next().html("&nbsp;&nbsp;<small>Nhận xét không được để trống</small>");
+                        $("#comment").css('border', '1px solid red');
+                        isValid = false;
+                    }else{
+                        $("#commentLabel").next().text("*");
+                        $("#comment").css('border', '1px solid #ced4da');
+                    }
+
+                    if(isValid == true){
+                        $.ajax({
+                            type: 'POST',
+                            url: 'http://localhost:3000/comments',
+                            data: {
+                                idProduct: idValue,
+                                name: nameCmt,
+                                time: formatTime,
+                                cmt: comment
+                            },
+                            success: function(data) { 
+                                alert('Đã thêm!'); 
+                            },
+                            dataType: 'json'
+                        });
+                    }                        
+                });
+
+                $(".characteristics").click(function(){
+                    $(".ratingAndReviews").removeClass("tab-active");
+                    $(".characteristics").addClass("tab-active");
+                    $("#ratingAndReviews").hide();
+                    $("#characteristics").show(300);
+                });
+                $(".ratingAndReviews").click(function(){
+                    $(".characteristics").removeClass("tab-active");
+                    $(".ratingAndReviews").addClass("tab-active");
+                    $("#characteristics").hide();
+                    $("#ratingAndReviews").show(300);
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Didongxanh | Thanh toán</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel ="shortcut icon" href="../../img/logo/favicon_Didongxanh.png">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="../../public/css/style.css" rel="stylesheet">
+    </head>
+    <body style="background-color: #f1f1f1">
+        <div class="topnav">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="logo-web">
+                            <a href="home.html"><img src="../../img/logo/logo_Didongxanh_white.png" width="150px" height="auto"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="search-nav">
+                            <input id="search" class="form-control" type="text" style="position: relative;" placeholder="Tìm kiếm">
+                            <ul class="list-group" id="result" style="margin-top: 15px"></ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-5 col-5">
+                        <div class="bag-nav dropdown-bag">
+                            <a href="checkout_cart.html" class="link-bag">
+                                <i class="fa fa-shopping-bag" style="font-size: 28px;"></i>
+                                <span class="text-bag">Giỏ</span>
+                                <span class="badge badge-dark badge-pill" id="munber-bag"></span>
+                            </a>
+                            <div class="dropdown-bag-content">
+                                <div style="background-color: #ff6700; height: 5px; border-radius: 3px 3px 0 0"></div>
+                                <div class="list-group" id="dropdown-bag-content">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-7 col-7">
+                        <div class="login-nav dropdown-login" id="displayLogin">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+            <a href="home.html" class="navbar-toggler" style="color: #ccc">Trang chủ</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav" id="navCompany">
+                    
+                </ul>
+            </div>           
+        </nav>
+        <div class="container">
+            <div class="container-checkout">
+                <div class="container-checkout-head">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="checkout">
+                                <div class="checkout-number">1</div>
+                                <div class="checkout-info">
+                                    <div class="checkout-title">Kiểm tra</div>
+                                    <div class="checkout-desc">Giỏ hàng của bạn</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="checkout">
+                                <div class="checkout-number">2</div>
+                                <div class="checkout-info">
+                                    <div class="checkout-title">Thông tin</div>
+                                    <div class="checkout-desc">Cá nhân và địa chỉ</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="checkout checkout-active" id="checkout-payment">
+                                <div class="checkout-number">3</div>
+                                <div class="checkout-info">
+                                    <div class="checkout-title">Xác nhận</div>
+                                    <div class="checkout-desc">Dịch vụ thanh toán</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="checkout" id="checkout-complete">
+                                <div class="checkout-number">4</div>
+                                <div class="checkout-info">
+                                    <div class="checkout-title">Hoàn tất</div>
+                                    <div class="checkout-desc">Hóa đơn mua hàng</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-checkout-main" id="checkout-main">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="title-payment"><h5>Kiểm tra lại giỏ hàng:</h5></div>
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="bag-product">
+                                    <tr>
+                                        <th colspan="2">Tên sản phẩm</th>
+                                        <th>Màu sắc</th>
+                                        <th>Giá tiền</th>
+                                        <th>Số lượng</th>
+                                        <th>Tổng</th>
+                                    </tr>
+                                </table>
+                                <div class="total-cart float-right">
+                                    <table class="table">
+                                        <tr class="text-right">
+                                            <td class="pr-5">Tổng tiền giỏ hàng</td>
+                                            <td>
+                                                <span class="displayTotalBag"></span><span>&nbsp;₫</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="text-right">
+                                            <td class="pr-5 form-group">
+                                                <select id="typeShipper" class="custom-select">
+                                                    <option value="20000" selected>Phí giao hàng tiết kiệm</option>
+                                                    <option value="50000">Phí giao hàng nhanh</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <span class="displayMoneyShip"></span><span>&nbsp;₫</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="text-right">
+                                            <td class="pr-5 h5">Tổng hóa đơn thanh toán</td>
+                                            <td class="h5">
+                                                <span class="displayTotalPay"></span><span>&nbsp;₫</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="title-payment"><h5>Phương thức thanh toán:</h5></div>
+                            <form action="">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="">Tên chủ thẻ:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="nameCard">
+                                            <span class="error-pattern"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="">Số thẻ:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="numberCard">
+                                            <span class="error-pattern"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="">Hình thức:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-inline" style="margin-bottom: 20px;">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="visaCard" name="typeCard" value="Visa Card" title="Visa Card" checked>
+                                                <label class="custom-control-label" for="visaCard"><i class="fa fa-cc-visa" title="Visa Card" style="font-size:24px"></i></label>
+                                            </div>
+                                            <div class="custom-control custom-radio" style="margin-left: 5px">
+                                                <input type="radio" class="custom-control-input" id="masterCard" name="typeCard" value="Master Card" title="Master Card">
+                                                <label class="custom-control-label" for="masterCard"><i class="fa fa-cc-mastercard" title="Master Card" style="font-size:24px"></i></label>
+                                            </div>
+                                            <div class="custom-control custom-radio" style="margin-left: 5px">
+                                                <input type="radio" class="custom-control-input" id="creditCard" name="typeCard" value="Credit Card" title="Credit Card">
+                                                <label class="custom-control-label" for="creditCard"><i class="fa fa-credit-card-alt" title="Credit Card" style="font-size:24px"></i></label>
+                                            </div>                                     
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="">Ngày hết hạn:</label>
+                                    </div>
+                                    <div class="col-md-8 mb-3">
+                                        <div class="form-inline">
+                                            <input type="text" class="form-control inputExpirationDate" id="expirationDay">
+                                            <span>&nbsp;/&nbsp;</span>
+                                            <input type="text" class="form-control inputExpirationDate" id="expirationMonth">
+                                            <span class="error-pattern" id="error-inputExpirationDate"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="">Mã CSC:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control inputCSC" id="cscCard">
+                                            <span class="error-pattern"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>  
+                </div>
+                <div class="container-checkout-footer" id="checkout-footer">
+                    <a href="checkout_cart.html"><input type="button" class="btn btn-secondary float-left" value="Trở lại"></a>
+                    <input type="submit" class="btn btn-primary float-right" id="submit-checkout-payment" value="Thanh toán">
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid container-footer-police">
+            <div class="container container-police">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="content-police">
+                            <div class="float-left police-logo">
+                                <img src="../../img/icon/certificate.png" height="42px" width="auto">
+                            </div>
+                            <div class="police-text">
+                                <h6>Hàng chính hãng</h6>
+                                <p>Chúng tôi cam kết mọi sản phẩm là hàng chính hãng.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="content-police">
+                            <div class="float-left police-logo">
+                                <img src="../../img/icon/refresh.png" height="42px" width="auto">
+                            </div>
+                            <div class="police-text">
+                                <h6>Đổi trả hàng</h6>
+                                <p>Dễ dàng lên đến 15 ngày đầu khi mua sản phẩm.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="content-police">
+                            <div class="float-left police-logo">
+                                <img src="../../img/icon/protect-filled.png" height="42px" width="auto">
+                            </div>
+                            <div class="police-text">
+                                <h6>Bảo hành 12 tháng</h6>
+                                <p>Chính hãng mọi sản phẩm của chúng tối.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="content-police">
+                            <div class="float-left police-logo">
+                                <img src="../../img/icon/itruck-filled.png" height="42px" width="auto">
+                            </div>
+                            <div class="police-text">
+                                <h6>Giao hàng toàn quốc</h6>
+                                <p>Vận chuyển nhanh trong 60 phút.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid container-footer-about">
+            <div class="container container-about">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="content-about">
+                            <div class="about-text">
+                                <h6>Về chúng tôi</h6>
+                                <p>didongxanh.com được thành lập từ năm 2004, là chuỗi bán lẻ thiết bị di động (điện thoại di động, máy tính bảng, laptop và phụ kiện) có thị phần số 1 Việt Nam với hơn 1000 cửa hàng hiện diện tại 63 tỉnh thành trên khắp Việt Nam.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="content-about">
+                            <div class="about-text">
+                                <h6>Liên kết liên quan</h6>
+                                <ul style="padding-left: 20px;">
+                                    <li>Chính sách bảo hành</li>
+                                    <li>Chính sách đổi trả</li>
+                                    <li>Giao hàng và thanh toán</li>
+                                    <li>Tìm hiểu về mua trả góp</li>
+                                    <li>Tin khuyến mãi</li>
+                                    <li>Hệ thống cửa hàng</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="content-about">
+                            <div class="about-text">
+                                <h6>Liên hệ</h6>
+                                <p>Tư vấn miễn phí (24/7):</p>
+                                <span class="hotline">1800 6601</span>
+                                <p>Góp ý, phản ánh (8h00 - 22h00):</p>
+                                <span class="hotline">1800 6616</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="content-about">
+                            <div class="about-text" style="text-align: left">
+                                <h6>Liên kết khác</h6>
+                                <p><i class="material-icons" style="font-size: 12px">email</i>  Email: hotro@didongxanh.com</p>
+                                <p><i class="fa fa-facebook-official"></i>  Fanpage: fb.com/didongxanh</p>
+                                <p><i class="fa fa-youtube-play"></i>  Youtube: Di Động Xanh</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid container-footer-copyright">
+            <div class="container container-copyright">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-6">
+                        <div class="content-copyright">
+                            <p>Copyright © 2018</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-6">
+                        <div class="content-card">
+                            <i class="fa fa-cc-visa"></i>
+                            <i class="fa fa-cc-mastercard"></i>
+                            <i class="fa fa-credit-card-alt"></i>
+                            <i class="fa fa-cc-jcb"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+        <script src="../../public/js/simple.money.format.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#search").keyup(function(){
+                    $("#result").empty();
+                    var searchField = $("#search").val();
+                    var expression = new RegExp(searchField, "i");
+                    if(expression != "/(?:)/i" & expression != "/ /i" ){
+                        $.getJSON('http://localhost:3000/product', function(data){
+                            $.each($(data), function(i, value){
+                                if(value.name.search(expression) != -1){
+                                    $("#result").append(
+                                        '<li class="list-group-item list-group-item-action">'+
+                                            '<a href="product_detail.html?id='+value.id+'" style="text-decoration: none;">'+
+                                                '<img src="'+value.imgCover+'" class="img-thumbnail float-left" " height="48" width="48">'+
+                                                '<p class="text-result" style="color: black">'+value.name+'</p>'+
+                                                '<p class="text-result text-muted text-muted-search">'+value.price+'</p>'+
+                                            '</a>'+
+                                        '</li>'                            
+                                    );
+                                }
+                            });
+                            $(".text-muted-search").simpleMoneyFormat();
+                        });
+                    }
+                });
+
+                var getUser = localStorage.getItem('username');
+                if(getUser == null){
+                    $("#displayLogin").empty();
+                    $("#displayLogin").append(
+                        '<a href="../../site/view/login.html" class="link-login">'+
+                            '<i class="fa fa-user" style="font-size: 28px;"></i>'+
+                            '<span class="text-login" id="text-login">Đăng nhập</span>'+
+                        '</a>'
+                    );
+                }else{
+                    $("#displayLogin").empty();
+                    $("#displayLogin").append(
+                        '<div class="link-login">'+
+                            '<i class="fa fa-user" style="font-size: 28px;"></i>'+
+                            '<span class="text-login" id="text-login">'+getUser+'</span>'+
+                        '</div>'+
+                        '<div class="dropdown-login-content">'+
+                            '<a href="my_account.html" class="list-group-item list-group-item-action">Kiểm tra thông tin</a>'+
+                            '<a href="#" id="logout" class="list-group-item list-group-item-action">Đăng xuất</a>'+
+                        '</div>'
+                    );
+                    $("#logout").click(function(){
+                        localStorage.removeItem("username");
+                        $("#displayLogin").empty();
+                        $("#displayLogin").append(
+                        '<a href="../../site/view/login.html" class="link-login">'+
+                            '<i class="fa fa-user" style="font-size: 28px;"></i>'+
+                            '<span class="text-login" id="text-login">Đăng nhập</span>'+
+                        '</a>'
+                        );
+                    });
+                }
+
+                $.getJSON('http://localhost:3000/companies', function(data){
+                    $.each($(data), function(i, companies){
+                        $("#navCompany").append(
+                            '<li class="nav-item" style="width:'+100/data.length+'%">'+
+                                '<a class="nav-link" href="product.html?company='+companies.nameCompany+'">'+companies.nameCompany+'</a>'+
+                            '</li>'
+                        );
+                    });
+                });
+                $.getJSON('http://localhost:3000/bag', function(){
+                    var checkLogin = $("#text-login").text();
+                    if(checkLogin == 'Đăng nhập'){
+                        $(location).attr('href', 'login.html');
+                    }else{
+                        $.getJSON('http://localhost:3000/checkoutInfo?id='+checkLogin, function(info){
+                            if(info.length == 0){
+                                $(location).attr('href', 'checkout_info.html');
+                            }                      
+                        });
+                        $.getJSON('http://localhost:3000/bag?nameBag='+checkLogin, function(data){
+                            $("#munber-bag").text(data.length);
+                            if(data.length != 0){
+                                $.each($(data), function(i, bag){                                
+                                    $("#dropdown-bag-content").append(
+                                        '<li class="list-group-item list-group-item-action">'+
+                                            '<img src="'+bag.imgCover+'" class="img-thumbnail float-left" " height="46" width="46">'+
+                                            '<p class="text-result" style="color: black">'+bag.name+' | '+bag.color+' <span class="badge badge-pill" style="background-color: #ff6700; color: white">'+bag.number+'</span></p>'+                
+                                            '<p class="text-result text-muted">'+bag.price+'</p>'+
+                                        '</li>'  
+                                    );
+                                    $("#bag-product").append(
+                                        '<tr>'+
+                                            '<td class="table-middle"><div class="img-thumbnail" style="background: url('+bag.imgCover+') no-repeat; width: 48px; height: 48px;background-position: 50% 50%; background-size: cover;"></div></td>'+
+                                            '<td class="table-middle">'+bag.name+'</td>'+
+                                            '<td class="table-middle">'+bag.color+'</td>'+
+                                            '<td class="table-middle">'+
+                                                '<input type="text" style="display: none" name="name['+bag.id+']" value="'+bag.price+'" disabled="disabled">'+
+                                                '<span class="displayPrice">'+bag.price+'</span><span>&nbsp;₫</span>'+
+                                            '</td>'+
+                                            '<td class="table-middle" style="text-align: center">'+
+                                                '<input type="text" style="display: none" name="['+bag.id+']" value="'+bag.number+'">'+
+                                                '<span>'+bag.number+'</span>'+
+                                            '</td>'+
+                                            '<td class="table-middle">'+
+                                                '<input id="total" type="text" style="display: none" name="total['+bag.id+']" value="" disabled="disabled">'+
+                                                '<span class="displayTotal">'+bag.price+'</span><span>&nbsp;₫</span>'+
+                                            '</td>'+
+                                        '</tr>'
+                                    );
+                                    var displayPrice = $("input[name='name["+bag.id+"]'").val();
+                                    var displayNumber = $("input[name='["+bag.id+"]'").val();
+                                    var displayTotal = parseInt(displayPrice)*parseInt(displayNumber);
+                                    $("input[name='total["+bag.id+"]'").val(displayTotal);
+                                    $("input[name='total["+bag.id+"]'").next().text(displayTotal);
+                                });
+                                $("#dropdown-bag-content").append(
+                                    '<li class="list-group-item list-group-item-action" style="text-align: center">'+
+                                        '<a href="checkout_cart.html" class="btn btn-outline-secondary">Xem chi tiết</a>'+
+                                    '</li>'  
+                                );
+                                var arrayTotal = new Array(); 
+                                var totalBag = 0;
+                                var totalPay = 0;
+
+                                function add(a, sum){
+                                    return sum + a;
+                                };
+                                
+                                function sumTotal(){
+                                    var moneyShip = parseInt($("#typeShipper").val());
+
+                                    for (i = 0; i < $("table").find('input[id="total"]').length; i++){
+                                        arrayTotal[i] = parseInt($("table").find('input[id="total"]')[i].value);
+                                    }
+                                    totalBag = arrayTotal.reduce(add,0);
+                                    $(".displayTotalBag").text(totalBag);
+                                    $(".displayTotalBag").simpleMoneyFormat();
+                                    if(totalBag == 0){
+                                        moneyShip = 0;
+                                    }
+                                    totalPay = totalBag + moneyShip;
+                                    $(".displayTotalPay").text(totalPay);
+                                    $(".displayTotalPay").simpleMoneyFormat();
+                                    $(".displayMoneyShip").text(moneyShip);
+                                    $(".displayMoneyShip").simpleMoneyFormat();
+
+                                    $("#typeShipper").change(function(){
+                                        var moneyTypeShip = parseInt($("#typeShipper").val());
+                                        if(totalBag == 0){
+                                            moneyShip = 0;
+                                        }else{
+                                            moneyShip = moneyTypeShip;
+                                        }
+                                        totalPay = totalBag + moneyShip;
+                                        $(".displayTotalPay").text(totalPay);
+                                        $(".displayTotalPay").simpleMoneyFormat();
+                                        $(".displayMoneyShip").text(moneyShip);
+                                        $(".displayMoneyShip").simpleMoneyFormat();
+                                    });
+                                };
+                                sumTotal();
+
+                                $(".text-muted").simpleMoneyFormat();
+                                $(".displayPrice").simpleMoneyFormat();
+                                $(".displayTotal").simpleMoneyFormat();
+                            }                              
+                        });      
+                    }
+                });
+
+                $("#submit-checkout-payment").click(function(){
+                    var checkLogin = $("#text-login").text();
+                    var isValid = true;
+                    var nameCardPattern = /[A-Za-z0-9]{3,}/;
+                    var numberCardPattern = /[0-9]{13,16}/g;
+                    var expirationDayPattern = /[0-9]{1,2}/g;
+                    var expirationMonthPattern = /[0-9]{1,2}/g;
+                    var cscCardPattern = /[0-9]{3}/g;
+                    var nameCard = $("#nameCard").val().trim();
+                    var numberCard = $("#numberCard").val();
+                    var expirationDay = $("#expirationDay").val();
+                    var expirationMonth = $("#expirationMonth").val();
+                    var cscCard = $("#cscCard").val();
+
+                    if(nameCard == ''){
+                        isValid = false;
+                        $("#nameCard").css('border', '1px solid red');
+                        $("#nameCard").next().text('Bạn chưa nhập tên chủ thẻ!');
+                    }else if(!nameCardPattern.test(nameCard)){
+                        isValid = false;
+                        $("#nameCard").css('border', '1px solid red');
+                        $("#nameCard").next().text('Tên chủ thẻ của bạn không đúng định dạng!');
+                    }else{
+                        $("#nameCard").css('border', '1px solid #ced4da');
+                        $("#nameCard").next().text('');
+                    }
+
+                    if(numberCard == ''){
+                        isValid = false;
+                        $("#numberCard").css('border', '1px solid red');
+                        $("#numberCard").next().text('Bạn chưa nhập số thẻ!');
+                    }else if(!numberCardPattern.test(numberCard)){
+                        isValid = false;
+                        $("#numberCard").css('border', '1px solid red');
+                        $("#numberCard").next().text('Số thẻ của bạn không đúng định dạng!');
+                    }else{
+                        $("#numberCard").css('border', '1px solid #ced4da');
+                        $("#numberCard").next().text('');
+                    }
+
+                    if(expirationDay == ''){
+                        isValid = false;
+                        $("#expirationDay").css('border', '1px solid red');
+                        $("#error-inputExpirationDate").text('Bạn đang để trống!');
+                    }else if(!expirationDayPattern.test(expirationDay)){
+                        isValid = false;
+                        $("#expirationDay").css('border', '1px solid red');
+                        $("#error-inputExpirationDate").text('Ngày hết hạn không đúng định dạng!');
+                    }else{
+                        $("#expirationDay").css('border', '1px solid #ced4da');
+                        $("#error-inputExpirationDate").text('');
+                    }
+
+                    if(expirationMonth == ''){
+                        isValid = false;
+                        $("#expirationMonth").css('border', '1px solid red');
+                        $("#error-inputExpirationDate").text('Bạn đang để trống!');
+                    }else if(!expirationMonthPattern.test(expirationMonth)){
+                        isValid = false;
+                        $("#expirationMonth").css('border', '1px solid red');
+                        $("#error-inputExpirationDate").text('Ngày hết hạn không đúng định dạng!');
+                    }else{
+                        $("#expirationMonth").css('border', '1px solid #ced4da');
+                        $("#error-inputExpirationDate").text('');
+                    }
+
+                    if(cscCard == ''){
+                        isValid = false;
+                        $("#cscCard").css('border', '1px solid red');
+                        $("#cscCard").next().text('Bạn chưa nhập mã CSC!');
+                    }else if(!cscCardPattern.test(cscCard)){
+                        isValid = false;
+                        $("#cscCard").css('border', '1px solid red');
+                        $("#cscCard").next().text('Mã CSC của bạn không đúng!');
+                    }else{
+                        $("#cscCard").css('border', '1px solid #ced4da');
+                        $("#cscCard").next().text('');
+                    }
+
+                    if(isValid == true){    
+                        $.getJSON('http://localhost:3000/checkoutInfo/'+checkLogin, function(info){
+                            var now = new Date();
+                            var formatTime = now.getDate() +'/'+ parseInt(now.getUTCMonth()+1) + '/' + now.getFullYear() + '  ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
+                            var fullName = info.fullname;
+                            var sex = info.sex;
+                            var email = info.email;
+                            var phone = info.phone;
+                            var address = info.address;
+                            var area = info.area;
+                            var zip = info.zip;
+                            var businessAddress = info.businessAddress; 
+                            $.getJSON('http://localhost:3000/bag?nameBag='+checkLogin, function(data){   
+                                $.each($(data), function(i, bag){
+                                    var name = bag.name;
+                                    var price = bag.price;
+                                    var color = bag.color;
+                                    var number = bag.number;
+                                    var imgCover = bag.imgCover;
+                                    var totalPrice = $("input[name='total["+bag.id+"]'").val();
+                                    var nameBag = bag.nameBag;
+                                    var idProduct = bag.idProduct;
+                                    console.log(nameBag);
+                                    console.log(idProduct);
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: 'http://localhost:3000/historyPayment',
+                                        data: {
+                                            namePayment : checkLogin,
+                                            name : name,
+                                            price : price,
+                                            color : color,
+                                            number : number,
+                                            imgCover : imgCover,
+                                            time : formatTime,
+                                            totalPrice : totalPrice,
+                                            fullName : fullName,
+                                            sex : sex,
+                                            email : email,
+                                            phone : phone,
+                                            address : address,
+                                            area : area,
+                                            zip : zip,
+                                            businessAddress : businessAddress
+                                        },
+                                        success: function() {
+                                            alert('Đã thanh toán sản phẩm '+name);
+                                        },
+                                        dataType: 'json',
+                                    });
+                                });
+                                function checkoutComplete(){
+                                    $(location).attr('href', 'checkout_complete.html');
+                                };
+                                checkoutComplete();
+                            });
+                        }); 
+                    }
+                })
+                $('[data-toggle="tooltipAddressBusiness"]').tooltip();
+            });
+        </script>
+    </body>
+</html>
